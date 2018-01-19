@@ -1,0 +1,36 @@
+Salanie kolejek
+
+Dane są posortowane kolejki A i B
+Jedno lub zero elementowe kolejki A' i B'
+Kolejka C która jest scalonymi A i B
+
+QE - queue empty - prawda jeśli kolejka jest pusta
+DEQ - dequque - element wychodzi z kolejki
+ENQ(kolejka, element) - enter queue - elemen wchodzi do kolejki
+
+while !(QE(A) && QE(A') || (QE(B) && QE(B')))
+	if QE(A')
+		d = DEQ(A)
+	else
+		d = DEQ(A')
+		
+	if QE(B')
+		e = DEQ(B)
+	else
+		e = DEQ(B')
+		
+	if d<e
+		ENQ(C,d)
+		ENQ(B',e)
+	else
+		ENQ(C,e)
+		ENQ(A',d)
+
+if QE(A')
+	ENQ(C, DEQ(B'))
+	while !(QE(B))
+		ENQ(C, DEQ(B))
+else
+	ENQ(C, DEQ(A'))
+	while !(QE(A))
+		ENQ(C, DEQ(A))
